@@ -3,12 +3,16 @@
 {% block content %}
 
 <div class='col-sm-10 col-sm-offset-1'>
-<h1 class="text-center text-danger">{{title}}</h1><hr/>	
+<div class="page-header">
+<h1>{{title}}</h1>
+</div>
 <p><h3>If you can multiply numbers, add numbers, type using a keyboard then you can code!</h3></p><hr/>
+
+
 <form class="form-inline text-right" method="GET" action="">
   <div class="form-group">
     <input class="form-control" type="text" name='q' align="right" placeholder="Search Posts" value="{{ request.GET.q }}" />
-    <input class="form-control" type="Submit" name="Search"/>  
+    <button class="btn btn-primary" type="Submit">Search</button>  
   </div>
 </form>
 
