@@ -13,9 +13,6 @@
 <div class="row">	
   <div class="col-sm-12">
     <div class="thumbnail">
-      {% if obj.image %}
-	      <img src='{{ obj.image.url }}' class='img-responsive' />
-	    {% endif %}
       <!-- <img src="..." alt="..."> -->
       <div class="caption">
         {% if obj.draft %}<h3>Staff only : Draft </h3> {% endif %} {% if obj.publish > today %} <h3> Staff only :Future Post </h3> {% endif %}
