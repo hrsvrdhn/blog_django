@@ -5,7 +5,6 @@
 {{ instance.title }} | {{ block.super }}
 {% endblock head_title %}
 
-
 {% block content %}
 <style>
 a:link , a:visited,a:hover,a:active {
@@ -22,7 +21,7 @@ a:link , a:visited,a:hover,a:active {
 </p>
 <hr>
 <div class="col-sm-8 col-sm-offset-2">
-<h1> {{title}} <br/><br/><small>{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
+<h1> {{title}} <small style="float: right;">{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
 {% if instance.user.get_full_name %}
 <p> Author : {{ instance.user.get_full_name }} </p>
 {% endif %}
@@ -41,5 +40,12 @@ a:link , a:visited,a:hover,a:active {
 
 </div>
 </div>
+<hr>
+    <div class="text-center">
+       <a href="http://facebook.com/hrsvrdhn" target="_blank"><img src="https://image.flaticon.com/icons/png/128/69/69407.png" class="img-rounded" width="32px" height="32px"></a>
+       <a href="http://github.com/hrsvrdhn" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-128.png" class="img-rounded" width="32px" height="32px"></a>
+    </div>
+<hr>
 </div>
+
 {% endblock content %}

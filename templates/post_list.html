@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<style>
-
-</style>
 <div class='col-sm-10 col-sm-offset-1'>
 <div class="page-header text-center">
 <h1 style="font-family: 'Maven Pro:900', sans-serif;letter-spacing: 0.3em;font-size: 3em">{{title}}</h1>
@@ -38,7 +35,7 @@
  <br/>
 {% endfor %}
 
-<div class="pagination">
+<!-- <div class="pagination">
     <span class="step-links">
         {% if obj_list.has_previous %}
             <a href="?{{ page_request_var }}={{ obj_list.previous_page_number }}{% if request.GET.q %} &q={{ request.GET.q }} {% endif %}">previous</a>
@@ -52,8 +49,25 @@
             <a href="?{{ page_request_var }}={{ obj_list.next_page_number }}{% if request.GET.q %} &q={{ request.GET.q }} {% endif %}">next</a>
         {% endif %}
     </span>
-</div>
+</div> -->
 
+    <nav aria-label="...">
+      <ul class="pager">
+        {% if obj_list.has_previous %}
+          <li><a href="?{{ page_request_var }}={{ obj_list.previous_page_number }}{% if request.GET.q %} &q={{ request.GET.q }} {% endif %}">Newer</a></li>
+        {% endif %}
+        Page {{ obj_list.number }} of {{ obj_list.paginator.num_pages }}
+        {% if obj_list.has_next %}
+          <li><a href="?{{ page_request_var }}={{ obj_list.next_page_number }}{% if request.GET.q %} &q={{ request.GET.q }} {% endif %}">Older</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <hr>
+    <div class="text-center">
+       <a href="http://facebook.com/hrsvrdhn" target="_blank"><img src="https://image.flaticon.com/icons/png/128/69/69407.png" class="img-rounded" width="32px" height="32px"></a>
+       <a href="http://github.com/hrsvrdhn" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-128.png" class="img-rounded" width="32px" height="32px"></a>
+    </div>
+    <hr>
 </div>
 
 {% endblock content %}
