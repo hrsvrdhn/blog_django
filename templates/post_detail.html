@@ -7,7 +7,21 @@
 
 
 {% block content %}
-<div class="col-sm-10 col-sm-offset-1">
+<style>
+a:link , a:visited,a:hover,a:active {
+    color: black;
+    text-decoration: none;
+}
+</style>
+<div class="page-header text-center">
+	<a href="/"><h1 style="font-family: 'Maven Pro:900', sans-serif;letter-spacing: 0.3em;font-size: 3em">Code Beautiful</h1></a>
+
+</div>
+<p>
+	<h4 style="font-family: Maven Pro;text-align: center;">If you can multiply numbers, add numbers, type using a keyboard then you can code!</h4>
+</p>
+<hr>
+<div class="col-sm-8 col-sm-offset-2">
 <h1> {{title}} <br/><br/><small>{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
 {% if instance.user.get_full_name %}
 <p> Author : {{ instance.user.get_full_name }} </p>

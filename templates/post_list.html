@@ -2,14 +2,6 @@
 
 {% block content %}
 <style>
-  hr{ 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
 
 </style>
 <div class='col-sm-10 col-sm-offset-1'>
@@ -33,12 +25,12 @@
       <!-- <img src="..." alt="..."> -->
       <div class="caption">
         {% if obj.draft %}<h3>Staff only : Draft </h3> {% endif %} {% if obj.publish > today %} <h3> Staff only :Future Post </h3> {% endif %}
-        <h3><a href='{{ obj.get_absolute_url }}'>{{obj.title}}</a><small> {{ obj.publish }}</small></h3>
+        <h3><a href='{{ obj.get_absolute_url }}'>{{obj.title}}</a><small style="float: right;"> {{ obj.publish }}</small></h3>
         {% if obj.user.get_full_name %}
-          <p> Author : {{ obj.user.get_full_name }} </p>
+          <p > Author : {{ obj.user.get_full_name }} </p>
         {% endif %}
-        <p>{{obj.content | linebreaks | truncatechars:120 }}</p>
-        <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+        <p>{{obj.content | safe | linebreaks | truncatechars:200 }}</p>
+        <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">Read more</a></p>
       </div>
     </div>
   </div>
