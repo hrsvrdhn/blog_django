@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="col-sm-6 col-sm-offset-3">
-<h1> {{title}} <small>{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
+<h1> {{title}} <br/><br/><small>{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
 {% if instance.user.get_full_name %}
 <p> Author : {{ instance.user.get_full_name }} </p>
 {% endif %}
@@ -16,24 +16,7 @@
 <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 <hr/>
 </p>
-<!-- {{ instance.content | urlify }} -->
-<!-- <p>
-<a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
-Facebook
-</a>
 
-<a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}">
-Twitter
-</a>
-
-<a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}'>
-
-<a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}">
-Linkedin
-</a>
-
-<a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}">Reddit</a>
-</p> -->
 <div class="row">
 <div class="col-sm-12">
 
