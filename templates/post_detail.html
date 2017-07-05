@@ -7,7 +7,7 @@
 
 
 {% block content %}
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-10 col-sm-offset-1">
 <h1> {{title}} <br/><br/><small>{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
 {% if instance.user.get_full_name %}
 <p> Author : {{ instance.user.get_full_name }} </p>
