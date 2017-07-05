@@ -5,10 +5,13 @@
 <div class='col-sm-10 col-sm-offset-1'>
 <h1 class="text-center text-danger">{{title}}</h1><hr/>	
 <p><h3>If you can multiply numbers, add numbers, type using a keyboard then you can code!</h3></p><hr/>
-<form style="overflow: hidden;" method="GET" action="">
-<input style="float:right;clear: both;" type="Submit" name="Search"/>
-<input style="float:right;" type="text" name='q' align="right" placeholder="Search Posts" value="{{ request.GET.q }}" />
+<form class="form-inline text-right" method="GET" action="">
+  <div class="form-group">
+    <input class="form-control" type="text" name='q' align="right" placeholder="Search Posts" value="{{ request.GET.q }}" />
+    <input class="form-control" type="Submit" name="Search"/>  
+  </div>
 </form>
+
 {% for obj in obj_list %}
 <div class="row">	
   <div class="col-sm-12">

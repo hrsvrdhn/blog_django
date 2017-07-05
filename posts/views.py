@@ -53,8 +53,7 @@ def posts_list(request):
 		queryset_list = queryset_list.filter(
 			Q(title__icontains=query) |
 			Q(content__icontains=query) |
-			Q(user__first_name__icontains=query) |
-			Q(title__last_name__icontains=query) 
+			Q(user__first_name__icontains=query) 
 			).distinct()
 	paginator = Paginator(queryset_list, 5) 
 	page_request_var = 'page'
