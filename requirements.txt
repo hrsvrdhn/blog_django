@@ -1,3 +1,4 @@
+python==2.7.12
 dj-database-url==0.4.2
 Django==1.9
 gunicorn==19.7.1
