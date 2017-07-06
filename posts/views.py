@@ -1,4 +1,4 @@
-from urllib import quote_plus
+# from urllib import quote_plus
 from django.shortcuts import render,get_object_or_404,redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse,HttpResponseRedirect,Http404
@@ -35,7 +35,7 @@ def posts_detail(request, slug=None):
 	if instance.draft or instance.publish > timezone.now().date():
 		if not request.user.is_staff or not request.user.is_superuser:
 			raise Http404
-	share_string = quote_plus(instance.content)
+	# share_string = quote_plus(instance.content)
 	context = {
 		"title" : instance.title,
 		"instance" : instance,
