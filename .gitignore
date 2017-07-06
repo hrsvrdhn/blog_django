@@ -2,10 +2,6 @@ trydjango19/settings/local.py
 
 db.sqlite3
 
-*.pyc
-*.pyo
-*.pyd
-
 .DS_Store
 bin/
 include/
