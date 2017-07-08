@@ -9,5 +9,6 @@ class PostForm(forms.ModelForm):
 			"title",
 			"content",
 			"draft",
+			"category",
 			"publish",
 		]

@@ -22,9 +22,16 @@ a:link , a:visited,a:hover,a:active {
 <hr>
 <div class="col-sm-8 col-sm-offset-2">
 <h1> {{title}} <small style="float: right;">{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
+<p>
 {% if instance.user.get_full_name %}
-<p> Author : {{ instance.user.get_full_name }} </p>
+ Author : {{ instance.user.get_full_name }} 
 {% endif %}
+<br>
+{% if instance.category %}
+ Tags : {{ instance.category }} 
+{% endif %}
+
+</p>
 <p>
 <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 <hr/>
