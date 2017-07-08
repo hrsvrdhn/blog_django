@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class='col-sm-10 col-sm-offset-1'>
+<div class="col-sm-10 col-sm-offset-1">
 <div class="page-header text-center">
-<h1 style="font-family: 'Maven Pro:900', sans-serif;letter-spacing: 0.25em;font-size: 3em">CODE BEAUTIFUL</h1>
+<h1 style="font-family: 'Maven Pro:900', sans-serif;letter-spacing: 0.25em;font-size: 3em">Code Beautiful</h1>
 </div>
 <p><h4 style="font-family: Maven Pro;text-align: center;">If you can multiply numbers, add numbers, type using a keyboard then you can code!</h4></p><hr>
 
@@ -15,6 +15,9 @@
   </div>
 </form>
 
+</div>
+<div class="row">
+<div class='col-md-8'>
 {% for obj in obj_list %}
 <div class="row">	
   <div class="col-sm-12">
@@ -51,7 +54,25 @@
     </span>
 </div> -->
 
-    <nav aria-label="...">
+   
+</div>
+<div class="col-md-4" style="border-left: thin solid #ff0000">
+  <p style="font-family: Maven Pro;text-align: center;">
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    <h4> Categories </h4>
+    
+  </p>
+</div>
+</div>
+<div class="col-sm-10 col-sm-offset-1">
+   <nav aria-label="...">
       <ul class="pager">
         {% if obj_list.has_previous %}
           <li class="previous"><a href="?{{ page_request_var }}={{ obj_list.previous_page_number }}{% if request.GET.q %} &q={{ request.GET.q }} {% endif %}">Newer</a></li>
@@ -69,5 +90,4 @@
     </div>
     <hr>
 </div>
-
 {% endblock content %}
