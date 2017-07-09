@@ -42,11 +42,27 @@
 {% endfor %}
    
 </div>
+<style>
+  .linkbutton {
+     background:none!important;
+     color:inherit;
+     border:none; 
+     padding:0!important;
+     font: inherit;
+     /*border is optional*/
+     /*border-bottom:1px solid #444; */
+     cursor: pointer;
+}
+</style>
 <div class="col-md-4" style="border-left: thin solid #bbb6b6">
   <h4 style="font-family: Maven Pro;"> Categories</h4>
   <ul>
     {% for category,numbers in categories.items %}
-      <li>{{ category }}({{ numbers }})</li>
+      <li>
+        <form method="GET" action="">
+            <button class="linkbutton" name="tag" value='{{ category }}' formaction="{{ request.GET.tag }}" formmethod="GET" type="Submit">{{ category }}({{ numbers }})</button>  
+        </form>
+      </li>
     {% endfor %}
   </ul>
 </div>
