@@ -48,12 +48,25 @@ def posts_list(request):
 	queryset_list = Post.objects.active()#.order_by("-timestamp")
 	if request.user.is_superuser or request.user.is_staff:
 		queryset_list = Post.objects.all()
+	categories = {}
+	for i in queryset_list:
+		if i.category=="":
+			continue
+		elif i.category not in categories:
+			categories[i.category] = 1
+		else:
+			categories[i.category] += 1
 	query = request.GET.get('q')
 	if query:
 		queryset_list = queryset_list.filter(
 			Q(title__icontains=query) |
 			Q(content__icontains=query) |
 			Q(user__first_name__icontains=query) 
+			).distinct()
+	tag_filter = request.GET.get('tag')
+	if tag_filter:
+		queryset_list = queryset_list.filter(
+			Q(category__icontains=tag_filter)
 			).distinct()
 	paginator = Paginator(queryset_list, 5) 
 	page_request_var = 'page'
@@ -72,6 +85,7 @@ def posts_list(request):
 			"title" : "Code Beautiful",
 			"page_request_var" : page_request_var,
 			"today" : today,
+			"categories" : categories,
 		}
 
 	return render(request, "post_list.html", context)

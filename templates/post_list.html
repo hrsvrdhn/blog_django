@@ -29,6 +29,9 @@
         {% if obj.user.get_full_name %}
           <p > Author : {{ obj.user.get_full_name }} </p>
         {% endif %}
+        {% if obj.category %}
+          <p > Tags : {{ obj.category }} </p>
+        {% endif %}
         <p>{{obj.content | safe | linebreaks | truncatechars:200 }}</p>
         <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">Read more</a></p>
       </div>
@@ -37,38 +40,15 @@
  </div>
  <br/>
 {% endfor %}
-
-<!-- <div class="pagination">
-    <span class="step-links">
-        {% if obj_list.has_previous %}
-            <a href="?{{ page_request_var }}={{ obj_list.previous_page_number }}{% if request.GET.q %} &q={{ request.GET.q }} {% endif %}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ obj_list.number }} of {{ obj_list.paginator.num_pages }}.
-        </span>
-
-        {% if obj_list.has_next %}
-            <a href="?{{ page_request_var }}={{ obj_list.next_page_number }}{% if request.GET.q %} &q={{ request.GET.q }} {% endif %}">next</a>
-        {% endif %}
-    </span>
-</div> -->
-
    
 </div>
-<div class="col-md-4" style="border-left: thin solid #ff0000">
-  <p style="font-family: Maven Pro;text-align: center;">
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    <h4> Categories </h4>
-    
-  </p>
+<div class="col-md-4" style="border-left: thin solid #bbb6b6">
+  <h4 style="font-family: Maven Pro;"> Categories</h4>
+  <ul>
+    {% for category,numbers in categories.items %}
+      <li>{{ category }}({{ numbers }})</li>
+    {% endfor %}
+  </ul>
 </div>
 </div>
 <div class="col-sm-10 col-sm-offset-1">
