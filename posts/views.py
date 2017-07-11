@@ -63,11 +63,6 @@ def posts_list(request):
 			Q(content__icontains=query) |
 			Q(user__first_name__icontains=query) 
 			).distinct()
-	tag_filter = request.GET.get('tag')
-	if tag_filter:
-		queryset_list = queryset_list.filter(
-			Q(category__icontains=tag_filter)
-			).distinct()
 	paginator = Paginator(queryset_list, 5) 
 	page_request_var = 'page'
 	page = request.GET.get(page_request_var)

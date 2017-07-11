@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-sm-12">
+<div class="col-sm-8 col-sm-offset-2">
 <div class="page-header text-center">
 <h1 style="font-family: 'Maven Pro:900', sans-serif;letter-spacing: 0.25em;font-size: 3em">Code Beautiful</h1>
 </div>
@@ -17,7 +17,7 @@
 
 </div>
 <div class="row">
-<div class='col-md-8'>
+<div class='col-sm-8 col-sm-offset-2'>
 {% for obj in obj_list %}
 <div class="row">	
   <div class="col-sm-12">
@@ -42,35 +42,8 @@
 {% endfor %}
    
 </div>
-<style>
-  .linkbutton {
-     background:none!important;
-     color: #337ab7;
-     border:none; 
-     padding:0!important;
-     font: inherit;
-     /*border is optional*/
-     /*border-bottom:1px solid #444; */
-     cursor: pointer;
-}
-.linkbutton:hover {
-     border-bottom:1px solid #337ab7; 
-}
-</style>
-<div class="col-md-4" style="border-left: thin solid #bbb6b6">
-  <h4 style="font-family: Maven Pro;"> Categories</h4>
-  <ul>
-    {% for category,numbers in categories.items %}
-      <li>
-        <form method="GET" action="">
-            <button class="linkbutton" name="tag" value='{{ category }}' formaction="{{ request.GET.tag }}" formmethod="GET" type="Submit">{{ category }}({{ numbers }})</button>  
-        </form>
-      </li>
-    {% endfor %}
-  </ul>
 </div>
-</div>
-<div class="col-sm-12">
+<div class="col-sm-8 col-sm-offset-2">
    <nav aria-label="...">
       <ul class="pager">
         {% if obj_list.has_previous %}
