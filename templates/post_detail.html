@@ -21,16 +21,16 @@ a:link , a:visited,a:hover,a:active {
 </p>
 <hr>
 <div class="col-sm-8 col-sm-offset-2">
-<h1> {{title}} <small style="float: right;">{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}{{instance.publish }}</small></h1>
-<p>
-{% if instance.user.get_full_name %}
- Author : {{ instance.user.get_full_name }} 
-{% endif %}
-<br>
-{% if instance.category %}
- Tags : {{ instance.category }} 
-{% endif %}
-
+<h1> {{title}} <small style="float: right;">{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}</small></h1>
+<p style="color: #555555">
+  {% if instance.publish %}
+  	<span class="glyphicon glyphicon-calendar" aria-hidden="true""></span>{{ instance.publish }}&emsp;
+  {% endif %}
+  {% if instance.user.get_full_name %}
+    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> : {{ instance.user.get_full_name }}&emsp;    {% endif %}
+  {% if instance.category %}
+    <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> : {{ instance.category }}
+  {% endif %}
 </p>
 <p>
 <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
