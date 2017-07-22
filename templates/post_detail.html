@@ -11,7 +11,11 @@ a:link , a:visited,a:hover,a:active {
     color: black;
     text-decoration: none;
 }
+code {
+  background-color: red;
+}
 </style>
+<div class="col-sm-8 col-sm-offset-2">
 <div class="page-header text-center">
 	<a href="/"><h1 style="font-family: 'Maven Pro:900', sans-serif;letter-spacing: 0.3em;font-size: 3em">Code Beautiful</h1></a>
 
@@ -20,7 +24,7 @@ a:link , a:visited,a:hover,a:active {
 	<h4 style="font-family: Maven Pro;text-align: center;">If you can multiply numbers, add numbers, type using a keyboard then you can code!</h4>
 </p>
 <hr>
-<div class="col-sm-8 col-sm-offset-2">
+<!-- <div class="col-sm-8 col-sm-offset-2"> -->
 <h1> {{title}} <small style="float: right;">{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}</small></h1>
 <p style="color: #555555">
   {% if instance.publish %}
@@ -36,17 +40,17 @@ a:link , a:visited,a:hover,a:active {
 <div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 <hr/>
 </p>
-
-<div class="row">
-<div class="col-sm-12">
-
 {{instance.content | safe }}<br>
 <hr/>
+<div class="row">
+<!-- <div class="col-sm-8 col-sm-offset-2"> -->
+
+
 <br/>
 <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
 
 </div>
-</div>
+<!-- </div> -->
 <hr>
     <div class="text-center">
        <a href="http://facebook.com/hrsvrdhn" target="_blank"><img src="https://image.flaticon.com/icons/png/128/69/69407.png" class="img-rounded" width="32px" height="32px"></a>
