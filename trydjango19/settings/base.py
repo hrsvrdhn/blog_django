@@ -138,3 +138,9 @@ CSRF_COOKIE_SECURE              = False
 SECURE_HSTS_SECONDS             = None
 SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
 SECURE_FRAME_DENY               = False
+
+
+# MY SOCIAL LINKS
+GITHUB = "hrsvrdhn"
+FACEBOOK = "hrsvrdhn"
+EMAIL = "harshavardhana.619@gmail.com"

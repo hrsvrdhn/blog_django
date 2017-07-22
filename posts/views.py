@@ -5,6 +5,7 @@ from django.http import HttpResponse,HttpResponseRedirect,Http404
 from django.db.models import Q
 from django.contrib import messages
 from django.utils import timezone
+from django.conf import settings
 # Create your views here.
 from .forms import PostForm
 from .models import Post
@@ -40,6 +41,8 @@ def posts_detail(request, slug=None):
 		"title" : instance.title,
 		"instance" : instance,
 		"share_string" : share_string,
+		"GITHUB" : settings.GITHUB,
+		"FACEBOOK" : settings.FACEBOOK,
 	}
 	return render(request, "post_detail.html", context)
 
@@ -81,6 +84,8 @@ def posts_list(request):
 			"page_request_var" : page_request_var,
 			"today" : today,
 			"categories" : categories,
+			"GITHUB" : settings.GITHUB,
+			"FACEBOOK" : settings.FACEBOOK,
 		}
 
 	return render(request, "post_list.html", context)
