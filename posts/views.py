@@ -61,11 +61,19 @@ def posts_list(request):
 			categories[i.category] += 1
 	query = request.GET.get('q')
 	if query:
-		queryset_list = queryset_list.filter(
-			Q(title__icontains=query) |
-			Q(content__icontains=query) |
-			Q(user__first_name__icontains=query) 
-			).distinct()
+		if not query.startswith("tags:"):	
+			queryset_list = queryset_list.filter(
+				Q(title__icontains=query) |
+				Q(content__icontains=query) |
+				Q(user__first_name__icontains=query) |
+				Q(category__icontains=query) 
+				).distinct()
+		else:
+			query = query.split(":")[1]
+			queryset_list = queryset_list.filter(
+				Q(category__icontains=query) 
+				).distinct()
+
 	paginator = Paginator(queryset_list, 5) 
 	page_request_var = 'page'
 	page = request.GET.get(page_request_var)

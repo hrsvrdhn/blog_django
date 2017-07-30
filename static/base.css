@@ -1,3 +1,15 @@
-body {
-	/*background-color: red;*/
-}	
+/*html,body{
+    height: 100%;
+}*/
+.cate {
+	height: 100%;
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+}
+footer {
+  bottom: -50px;
+  height: 50px;
+  left: 0;
+  position: relative;
+  right: 0;
+}
