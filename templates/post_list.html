@@ -26,7 +26,9 @@
         {% if obj.publish > today %} 
           <h3> Staff only :Future Post </h3> 
         {% endif %}
-        
+        <button style="float: right;" class="btn btn-danger" type="button">
+         Visits  <span class="badge">{{ obj.visits }}</span>
+      </button>
         <h3><a href='{{ obj.get_absolute_url }}'>{{obj.title}}</a></h3>
 
         <p style="color: #555555">
@@ -58,9 +60,9 @@
 <div class="col-sm-2 cate">
 <h3 class="text-center"><span class="label label-primary" style="background-color: #3074ae;">Categories</span></h3><br>
 <ul>
-{% for category in categories %}
+{% for key,category in categories.items %}
   <!-- <li><a onclick="typeinsearch('{{category}}')">{{ category }}</li> -->
-  <li><button class="btn btn-link" onclick="typeinsearch('{{category}}')">{{ category }}</button>
+  <li><button class="btn btn-link" onclick="typeinsearch('{{category}}')">{{ key }}({{ category }})</button>
 {% endfor %}
 </ul>
 </div>  
@@ -81,7 +83,7 @@
       </ul>
     </nav>
     <hr>
-    <div class="text-center ">
+    <div class="text-center">
        <a href="http://facebook.com/{{FACEBOOK}}" target="_blank"><img src="https://image.flaticon.com/icons/png/128/69/69407.png" class="img-rounded" width="32px" height="32px"></a>
        <a href="http://github.com/{{GITHUB}}" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-128.png" class="img-rounded" width="32px" height="32px"></a>
        <!-- <a href="mailto:harshavardhana.619@gmail.com" target="_blank">Mail me</a> -->

@@ -36,6 +36,8 @@ def posts_detail(request, slug=None):
 	if instance.draft or instance.publish > timezone.now().date():
 		if not request.user.is_staff or not request.user.is_superuser:
 			raise Http404
+	instance.visits += 1
+	instance.save()
 	share_string = quote_plus(instance.content)
 	context = {
 		"title" : instance.title,
@@ -52,6 +54,7 @@ def posts_list(request):
 	if request.user.is_superuser or request.user.is_staff:
 		queryset_list = Post.objects.all()
 	categories = {}
+	total_visits = 0
 	for i in queryset_list:
 		if i.category=="":
 			continue
@@ -59,6 +62,7 @@ def posts_list(request):
 			categories[i.category] = 1
 		else:
 			categories[i.category] += 1
+		total_visits += i.visits
 	query = request.GET.get('q')
 	if query:
 		if not query.startswith("tags:"):	
@@ -94,6 +98,7 @@ def posts_list(request):
 			"categories" : categories,
 			"GITHUB" : settings.GITHUB,
 			"FACEBOOK" : settings.FACEBOOK,
+			"total_visit" : total_visits,
 		}
 
 	return render(request, "post_list.html", context)
