@@ -34,13 +34,30 @@
 
 	</style>
 	<body>
-		<div class="page-header text-center">
-		<a id="heading" href="/"><h1>{ Code Beautiful }</h1></a>
+	<div class="container">
+	<div class="row">
+	<div class="col-md-12">
+			<div class="page-header text-center">
+			<a id="heading" href="/"><h1>{ Code Beautiful }</h1></a>
+			</div>
+		<p>
+			<h4>If you can multiply numbers, add numbers, type using a keyboard then you can code!</h4>
+		</p>
+		<hr>
 		</div>
-	<p>
-		<h4>If you can multiply numbers, add numbers, type using a keyboard then you can code!</h4>
-	</p>
-	<hr>
+		<div class="row">
+		<div class="col-md-11">
+		<form class="form-inline text-right" method="GET" action="/">
+		  <div class="form-group">
+		    <input id="fillIt" class="form-control" type="text" name='q' align="right" placeholder="Search Posts" value="{{ request.GET.q }}" />
+		    <button id="SearchTag" class="btn btn-primary" type="Submit">Search</button>  
+		  </div>
+		</form>
+		</div>
+		</div>
+		</div>
+	</div>
+	<br>
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];

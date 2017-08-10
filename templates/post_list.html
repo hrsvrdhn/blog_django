@@ -1,18 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
-<div class="col-sm-10 col-sm-offset-1">
-<form class="form-inline text-right" method="GET" action="">
-  <div class="form-group">
-    <input id="fillIt" class="form-control" type="text" name='q' align="right" placeholder="Search Posts" value="{{ request.GET.q }}" />
-    <button id="SearchTag" class="btn btn-primary" type="Submit">Search</button>  
-  </div>
-</form>
-</div>
-</div>
+
 <div class="container">
 <div class="row">
-<div class='col-sm-7 col-sm-offset-1'>
+<div class='col-md-8'>
 {% if obj_list %}
 {% for obj in obj_list %}
 <!-- <div class="row">	 -->
@@ -57,7 +48,7 @@
     </div>
 {% endif %}
 </div>
-<div class="col-sm-3 cate">
+<div class="col-md-3 cate">
 <h3 class="text-center"><span class="label label-primary" style="background-color: #3074ae;">Categories</span></h3><br>
 <ul>
 {% for key,category in categories.items %}
@@ -70,7 +61,7 @@
 </div>
 <footer>
 <div class="container">
-<div class="col-sm-10 col-sm-offset-1">
+<div class="col-md-10 col-md-offset-1">
    <nav aria-label="...">
       <ul class="pager">
         {% if obj_list.has_previous %}
