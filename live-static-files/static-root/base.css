@@ -9,7 +9,7 @@ h1 {
 	font-size: 3em;
 }
 #heading:link , #heading:visited,#heading:hover,#heading:active {
-    color: red;
+    color: black;
     text-decoration: none;
 }
 h4 {
