@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY',"0y@5e90g_^&(pkt@w8i$#w0ihe*6l@s%or96t7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['code-beautiful.herokuapp.com']
+ALLOWED_HOSTS = ['code-beautiful.herokuapp.com','.codebeautiful.tk','.codebeautiful.cf','.codebeautiful.ml']
 
 
 # Application definition
