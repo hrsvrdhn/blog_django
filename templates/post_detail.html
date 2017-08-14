@@ -6,11 +6,12 @@
 {% endblock head_title %}
 
 {% block content %}
-<div class="col-md-10 col-md-offset-1">
+<div class="container">
+<div class="col-md-8 col-md-offset-1">
 <button style="float: right;" class="btn btn-danger" type="button">
    Visits  <span class="badge">{{ instance.visits }}</span>
 </button>
-<h2> {{title}} <small style="float: right;">{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}</small></h1>
+<h2> {{title}} <small style="float: right;">{% if instance.draft %}<span style="color:red;">Draft </span>{% endif %}</small></h2>
 <p style="color: #555555">
   {% if instance.publish %}
   	<span class="glyphicon glyphicon-calendar" aria-hidden="true""></span>{{ instance.publish }}&emsp;
@@ -30,20 +31,22 @@
 {{instance.content | safe }}<br>
 <hr/>
 <div class="row">
-<!-- <div class="col-sm-8 col-sm-offset-2"> -->
-
-
 <br/>
 <div class="fb-comments" data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
 
 </div>
 <!-- </div> -->
-<hr>
-    <div class="text-center">
-       <a href="http://facebook.com/{{FACEBOOK}}" target="_blank"><img src="https://image.flaticon.com/icons/png/128/69/69407.png" class="img-rounded" width="32px" height="32px"></a>
-       <a href="http://github.com/{{GITHUB}}" target="_blank"><img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/mark-github-128.png" class="img-rounded" width="32px" height="32px"></a>
-    </div>
-<hr>
-</div>
 
+</div>
+<div class="col-md-2 text-center">
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=hrsh07-21&marketplace=amazon&region=IN&placement=B01N1X40DR&asins=B01N1X40DR&linkId=2bded310a61a4922a8d9a8c3f75f920f&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=hrsh07-21&marketplace=amazon&region=IN&placement=B00B7GV802&asins=B00B7GV802&linkId=75caa7a889803a982cb2be2f634f7197&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=hrsh07-21&marketplace=amazon&region=IN&placement=0981467350&asins=0981467350&linkId=c46b197fee9a89212a05008f4375b4fc&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=hrsh07-21&marketplace=amazon&region=IN&placement=0984782869&asins=0984782869&linkId=0fe96cf883402d26041d93636f242c76&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+</div>
+</div>
 {% endblock content %}
