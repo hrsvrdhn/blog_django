@@ -46,14 +46,25 @@
     </div>
 {% endif %}
 </div>
-<div class="col-md-3 cate">
+<div class="col-md-3 ">
+<div class="row cate">
 <h3 class="text-center"><span class="label label-primary" style="background-color: #3074ae;">Categories</span></h3><br>
 <ul>
 {% for key,category in categories.items %}
   <!-- <li><a onclick="typeinsearch('{{category}}')">{{ category }}</li> -->
-  <li><button class="btn btn-link" onclick="typeinsearch('{{key}}')">{{ key }}({{ category }})</button>
+  <li><button class="btn btn-link" onclick="typeinsearch('{{key}}')">{{ key }}({{ category }})</button></li>
 {% endfor %}
 </ul>
+</div>
+<br>
+<div class="row text-center cate">
+<h3 class="text-center"><span class="label label-primary" style="background-color: #3074ae;">Amazon Best Picks</span></h3><br>
+
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=hrsh07-21&marketplace=amazon&region=IN&placement=B01N1X40DR&asins=B01N1X40DR&linkId=2bded310a61a4922a8d9a8c3f75f920f&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ac&ref=tf_til&ad_type=product_link&tracking_id=hrsh07-21&marketplace=amazon&region=IN&placement=B00B7GV802&asins=B00B7GV802&linkId=75caa7a889803a982cb2be2f634f7197&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+    </iframe>
+</div>
 </div>  
 </div>
 </div>

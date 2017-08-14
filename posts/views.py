@@ -129,7 +129,3 @@ def posts_delete(request, slug=None):
 	instance.delete()
 	messages.success(request, "Successfully Saved!")
 	return redirect("posts:list")
-	141048
-
-def add_html(request):
-	return render(request, "add.html", {});
