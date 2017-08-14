@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
+<div class="container" background="https://content.newsbound.com/public/microsoft/microsoft_iot/images/background.c321e3367.jpg">
 <div class="row">
 <div class='col-md-8'>
 {% if obj_list %}
@@ -38,8 +38,6 @@
         <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">Read more</a></p>
       </div>
     </div>
-  <!-- </div> -->
- <!-- </div> -->
  <br/>
 {% endfor %}
 {% else %}
@@ -56,7 +54,13 @@
   <li><button class="btn btn-link" onclick="typeinsearch('{{key}}')">{{ key }}({{ category }})</button>
 {% endfor %}
 </ul>
-</div>  
+</div> 
+<script type="text/javascript" language="javascript">
+      var aax_size='300x250';
+      var aax_pubname = 'hrsh07-21';
+      var aax_src='302';
+    </script>
+    <script type="text/javascript" language="javascript" src="http://c.amazon-adsystem.com/aax2/assoc.js"></script> 
 </div>
 </div>
 <footer>
