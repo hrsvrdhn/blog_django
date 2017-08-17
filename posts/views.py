@@ -5,10 +5,14 @@ from django.http import HttpResponse,HttpResponseRedirect,Http404
 from django.db.models import Q
 from django.contrib import messages
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.template import loader
 from django.conf import settings
 # Create your views here.
+from emailapp.forms import EmailPostForm
 from .forms import PostForm
 from .models import Post
+from emailapp.models import Subscribers
 
 def posts_create(request):
 	if not request.user.is_staff or not request.user.is_superuser:
@@ -49,6 +53,27 @@ def posts_detail(request, slug=None):
 	return render(request, "post_detail.html", context)
 
 def posts_list(request):
+	form = EmailPostForm(request.POST or None)
+	if form.is_valid():
+		getemail = form.cleaned_data.get('user_email')
+		qs = Subscribers.objects.filter(user_email__iexact=getemail)
+		if qs.exists():
+			messages.success(request, "You are already with us")
+		else:
+			obj = Subscribers.objects.create(user_email=getemail)
+			html_message = loader.render_to_string(
+					'../templates/message.html',
+					{
+						'object' : obj,
+						'local' : getattr(settings,"DEBUG",False)
+					}
+				)
+			subject = 'Confirmation Email'
+			message = None
+			from_email = 'hrsvrdhn11@gmail.com'
+			recipient_list = [getemail]
+			send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=html_message)
+			messages.success(request, "Verification Link sent to email")
 	today = timezone.now().date()
 	queryset_list = Post.objects.active()#.order_by("-timestamp")
 	if request.user.is_superuser or request.user.is_staff:
@@ -99,6 +124,7 @@ def posts_list(request):
 			"GITHUB" : settings.GITHUB,
 			"FACEBOOK" : settings.FACEBOOK,
 			"total_visit" : total_visits,
+			'form':form,
 		}
 
 	return render(request, "post_list.html", context)

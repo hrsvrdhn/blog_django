@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>Unsubscribe | Code Beautiful</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<p>Successfully UnSubscribed , redirecting you in 3 seconds......</p>
+		<p>If redirect doesn't works , click on this <a href="{% url 'posts:list' %}">link.</a></p>
+				<script>
+				$(document).ready(function(){
+			setTimeout(function() {
+     			// $.get("{% url 'posts:list' %}") // Do something after 5 seconds
+     			window.location.href="{% url 'posts:list' %}";
+			}, 3000);
+				});
+		</script>
+	</body>
+</html>

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # My custom apps
+    'emailapp',
     'posts',
 ]
 
@@ -151,3 +152,9 @@ SECURE_FRAME_DENY               = False
 GITHUB = "hrsvrdhn"
 FACEBOOK = "hrsvrdhn"
 EMAIL = "harshavardhana.619@gmail.com"
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = "Email Address" 
+EMAIL_HOST_PASSWORD = "Password"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
