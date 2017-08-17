@@ -9,7 +9,7 @@ from .utils import getKey
 class Subscribers(models.Model):
 	user_email = models.EmailField()
 	timestamp = models.DateTimeField(auto_now_add=True)
-	confirmKey = models.CharField(max_length=10, blank=True, null=True)
+	confirmKey = models.CharField(max_length=20, blank=True, null=True)
 	confirmed = models.BooleanField(default=False)
 	def __unicode__(self):
 		return self.user_email
