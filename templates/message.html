@@ -1,6 +1,5 @@
 <h1>Welcome to Code Beautiful</h1>
 <h2>Your email is {{ object.user_email }}</h2>
-{{ local }}
 {% if local %}
 <p><a href="http://127.0.0.1:8000/email/confirm/{{ object.confirmKey }}">Please click on this link in order to verify your account</a></p>
 <p>You can unsubscribe anytime by clicking on this <a href="http://127.0.0.1:8000/email/unsubscribe/{{ object.confirmKey }}">link</a>.</p>
