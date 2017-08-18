@@ -72,8 +72,12 @@ def posts_list(request):
 			message = None
 			from_email = 'hrsvrdhn11@gmail.com'
 			recipient_list = [getemail]
-			send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=html_message)
-			messages.success(request, "Verification Link sent to email")
+			try:
+				send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=html_message)
+				messages.success(request, "Verification Link sent to email")
+			except:
+				obj.delete()
+				messages.success(request, "Sorry, try again later !")
 	today = timezone.now().date()
 	queryset_list = Post.objects.active()#.order_by("-timestamp")
 	if request.user.is_superuser or request.user.is_staff:
