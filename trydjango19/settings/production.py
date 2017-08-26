@@ -163,3 +163,5 @@ EMAIL_HOST_USER = os.environ.get("emailaddress","Nothing")
 EMAIL_HOST_PASSWORD = os.environ.get("Password","Nothing")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API',"error")

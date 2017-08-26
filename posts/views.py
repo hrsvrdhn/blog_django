@@ -5,7 +5,10 @@ from django.http import HttpResponse,HttpResponseRedirect,Http404
 from django.db.models import Q
 from django.contrib import messages
 from django.utils import timezone
-from django.core.mail import send_mail
+# from django.core.mail import send_mail
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
 from django.template import loader
 from django.conf import settings
 # Create your views here.
@@ -68,14 +71,17 @@ def posts_list(request):
 						'local' : getattr(settings,"DEBUG",False)
 					}
 				)
-			subject = 'Confirmation Email'
-			message = None
 			from_email = 'hrsvrdhn11@gmail.com'
-			recipient_list = [getemail]
-			try:
-				send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=None, auth_password=None, connection=None, html_message=html_message)
-				messages.success(request, "Verification Link sent to email")
-			except:
+			sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
+			from_email = Email("mail@codebeautiful.com")
+			to_email = Email(getemail)
+			subject = 'Confirmation Email'
+			content = Content("text/html", html_message)
+			mail = Mail(from_email, subject, to_email, content)
+			response = sg.client.mail.send.post(request_body=mail.get())
+			if response.status_code == 202:				
+				messages.success(request, "Verification Link sent to email, check in SPAM also")
+			else:
 				obj.delete()
 				messages.success(request, "Sorry, try again later !")
 	today = timezone.now().date()
