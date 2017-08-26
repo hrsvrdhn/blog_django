@@ -1,7 +1,7 @@
 # Code Beautiful
 > A blog app
 
-Blog made in Django web framework in backend and Bootstrap in front. It also have newsletter feature. Have a look [CodeBeautiful][link]
+Blog made in Django web framework in backend and Bootstrap in front. It also have newsletter feature. Have a look <a href="https://code-beautiful.herokuapp.com" target="_blank">CodeBeautiful</a>.
 
 ## Installation
 
@@ -26,6 +26,3 @@ Before running the app make sure you complete the following steps :-<br>
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
-
-
-[wiki]: https://code-beautiful.herokuapp.com
