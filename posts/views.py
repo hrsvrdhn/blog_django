@@ -34,7 +34,7 @@ def posts_create(request):
 	# 	Post.objects.create(title=title)
 	
 	context = {
-		"form" : form,
+		"formm" : form,
 	}
 	return render(request, "post_form.html", context)
 
