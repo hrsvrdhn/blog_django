@@ -73,12 +73,33 @@ def posts_list(request):
 					}
 				)
 			sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
-			from_email = Email("no-reply@codebeautiful.com")
-			to_email = Email(getemail)
-			subject = 'Confirmation Email'
-			content = Content("text/html", html_message)
-			mail = Mail(from_email, subject, to_email, content)
-			response = sg.client.mail.send.post(request_body=mail.get())
+			# from_email = Email("no-reply@codebeautiful.com")
+			# to_email = Email(getemail)
+			# subject = 'Confirmation Email'
+			# content = Content("text/html", html_message)
+			# mail = Mail(from_email, subject, to_email, content)
+			mail = {
+			  "personalizations": [
+			    {
+			      "to": [
+			        {
+			          "email": getemail
+			        }
+			      ],
+			      "subject": "Confirmation Email"
+			    }
+			  ],
+			  "from": {
+			    "email": "no-reply@codebeautiful.com"
+			  },
+			  "content": [
+			    {
+			      "type": "text/html",
+			      "value": html_message
+			    }
+			  ]
+			}
+			response = sg.client.mail.send.post(request_body=mail)
 			if response.status_code == 202:				
 				messages.success(request, "Verification Link sent to email, check in SPAM folder also")
 			else:
@@ -164,4 +185,43 @@ def posts_delete(request, slug=None):
 	instance = get_object_or_404(Post, slug=slug)
 	instance.delete()
 	messages.success(request, "Successfully Saved!")
+	return redirect("posts:list")
+
+
+def send_newsletter(request, slug=None):
+	if not request.user.is_staff or not request.user.is_superuser:
+		raise Http404
+	instance = get_object_or_404(Post, slug=slug)
+	subsribers_set = Subscribers.objects.all()
+	html_message = loader.render_to_string(
+				'../templates/newsletter.html',
+				{
+					'obj' : instance,
+					'local' : getattr(settings,"DEBUG",False)
+				}
+			)
+	mail = {
+	  "personalizations": [
+	    {
+	      "to": [{ "email" : subscriber.user_email } for subscriber in Subscribers.objects.all()],
+	      "subject": "CodeBeautiful | " + instance.title
+	    }
+	  ],
+	  "from": {
+	    "email": "Harsh_Vardhan@codebeautiful.com"
+	  },
+	  "content": [
+	    {
+	      "type": "text/html",
+	      "value": html_message
+	    }
+	  ]
+	}
+	sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
+	response = sg.client.mail.send.post(request_body=mail)
+	if response.status_code == 202:				
+		messages.success(request, "Email succesfully sent")
+	else:
+		obj.delete()
+		messages.success(request, "Sorry, try again later !")
 	return redirect("posts:list")

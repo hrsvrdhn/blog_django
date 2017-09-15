@@ -7,6 +7,7 @@ from .views import (
 	posts_detail,
 	posts_update,
 	posts_delete,
+	send_newsletter
 	)
 
 urlpatterns = [
@@ -15,4 +16,6 @@ urlpatterns = [
     url(r'^(?P<slug>[\w-]+)/$',posts_detail, name='detail'),
     url(r'^(?P<slug>[\w-]+)/edit/$',posts_update, name='update'),
     url(r'^(?P<slug>[\w-]+)/delete/$',posts_delete ),
+    url(r'^(?P<slug>[\w-]+)/newsletter/$',send_newsletter ),
 ]
+
