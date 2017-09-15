@@ -71,16 +71,15 @@ def posts_list(request):
 						'local' : getattr(settings,"DEBUG",False)
 					}
 				)
-			from_email = 'hrsvrdhn11@gmail.com'
 			sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
-			from_email = Email("mail@codebeautiful.com")
+			from_email = Email("no-reply@codebeautiful.com")
 			to_email = Email(getemail)
 			subject = 'Confirmation Email'
 			content = Content("text/html", html_message)
 			mail = Mail(from_email, subject, to_email, content)
 			response = sg.client.mail.send.post(request_body=mail.get())
 			if response.status_code == 202:				
-				messages.success(request, "Verification Link sent to email, check in SPAM also")
+				messages.success(request, "Verification Link sent to email, check in SPAM folder also")
 			else:
 				obj.delete()
 				messages.success(request, "Sorry, try again later !")
