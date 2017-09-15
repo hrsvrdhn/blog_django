@@ -192,7 +192,7 @@ def send_newsletter(request, slug=None):
 	if not request.user.is_staff or not request.user.is_superuser:
 		raise Http404
 	instance = get_object_or_404(Post, slug=slug)
-	subsribers_set = Subscribers.objects.all()
+	sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
 	html_message = loader.render_to_string(
 				'../templates/newsletter.html',
 				{
@@ -200,28 +200,31 @@ def send_newsletter(request, slug=None):
 					'local' : getattr(settings,"DEBUG",False)
 				}
 			)
-	mail = {
-	  "personalizations": [
-	    {
-	      "to": [{ "email" : subscriber.user_email } for subscriber in Subscribers.objects.all()],
-	      "subject": "CodeBeautiful | " + instance.title
-	    }
-	  ],
-	  "from": {
-	    "email": "Harsh_Vardhan@codebeautiful.com"
-	  },
-	  "content": [
-	    {
-	      "type": "text/html",
-	      "value": html_message
-	    }
-	  ]
-	}
-	sg = sendgrid.SendGridAPIClient(apikey=settings.SENDGRID_API_KEY)
-	response = sg.client.mail.send.post(request_body=mail)
-	if response.status_code == 202:				
+	flag = False
+	for subscriber in Subscribers.objects.filter(confirmed=True):
+		mail = {
+		  "personalizations": [
+		    {
+		      "to": [{ "email" : subscriber.user_email }],
+		      "subject": "CodeBeautiful | " + instance.title
+		    }
+		  ],
+		  "from": {
+		    "email": "Harsh_Vardhan@codebeautiful.com"
+		  },
+		  "content": [
+		    {
+		      "type": "text/html",
+		      "value": html_message
+		    }
+		  ]
+		}
+		response = sg.client.mail.send.post(request_body=mail)
+		if not response.status_code == 202:
+			flag = True				
+			break
+	if not flag:
 		messages.success(request, "Email succesfully sent")
 	else:
-		obj.delete()
 		messages.success(request, "Sorry, try again later !")
 	return redirect("posts:list")
