@@ -175,7 +175,7 @@ def posts_update(request, slug=None):
 	context = {
 		"title" : instance.title,
 		"instance" : instance,
-		"form" : form,
+		"formm" : form,
 	}
 	return render(request, "post_form.html", context)
 
